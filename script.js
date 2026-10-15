@@ -4,6 +4,27 @@
   const $ = (id) => document.getElementById(id);
 
   
+  // Create a few lightweight floating hearts
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const heartLayer = document.createDocumentFragment();
+
+    for (let i = 0; i < 5; i++) {
+      const heart = document.createElement("span");
+      heart.className = "floating-heart";
+      heart.textContent = "♥";
+      heart.setAttribute("aria-hidden", "true");
+
+      heart.style.left = `${12 + i * 18}%`;
+      heart.style.setProperty("--heart-size", `${12 + (i % 3) * 4}px`);
+      heart.style.setProperty("--heart-duration", `${12 + (i % 3) * 3}s`);
+      heart.style.setProperty("--heart-delay", `-${i * 2.5}s`);
+
+      heartLayer.appendChild(heart);
+    }
+
+    document.body.appendChild(heartLayer);
+  }
+
 
 
   // Lightweight falling flower petals
