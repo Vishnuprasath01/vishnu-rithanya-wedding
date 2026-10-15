@@ -107,6 +107,7 @@ for (let i = 0; i < 5; i++) {
  
  
 
+
 openInvitationBtn.addEventListener("click", async () => {
   document.body.classList.add("invitation-opening");
   window.scrollTo({ top: 0, left: 0, behavior: "instant" });
@@ -123,10 +124,6 @@ openInvitationBtn.addEventListener("click", async () => {
 
     // Keep the hero visible for one second.
     window.setTimeout(() => {
-      const introSection = document.querySelector("#intro");
-
-      if (!introSection) return;
-
       let userInteracted = false;
 
       const cancelAutoScroll = () => {
@@ -138,21 +135,22 @@ openInvitationBtn.addEventListener("click", async () => {
         passive: true
       };
 
-      window.addEventListener("touchstart", cancelAutoScroll, interactionOptions);
       window.addEventListener("wheel", cancelAutoScroll, interactionOptions);
+      window.addEventListener("touchstart", cancelAutoScroll, interactionOptions);
       window.addEventListener("keydown", cancelAutoScroll, { once: true });
 
-      // Give the browser time to register user input.
+      // Allow the browser to register user interaction.
       window.setTimeout(() => {
-        window.removeEventListener("touchstart", cancelAutoScroll);
         window.removeEventListener("wheel", cancelAutoScroll);
+        window.removeEventListener("touchstart", cancelAutoScroll);
         window.removeEventListener("keydown", cancelAutoScroll);
 
         if (userInteracted) return;
 
-        introSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+        // Smoothly scroll to the bottom of the entire page.
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth"
         });
       }, 100);
 
