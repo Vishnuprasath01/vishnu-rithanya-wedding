@@ -382,3 +382,34 @@ body.invitation-opening footer {
     animation: none !important;
   }
 }
+
+/* Soft floral corners for mobile */
+@media (max-width: 800px) {
+  .hero {
+    isolation: isolate;
+  }
+
+  .hero::before {
+    width: 210px;
+    height: 210px;
+    top: -125px;
+    left: -105px;
+    border-color: rgba(201, 133, 139, 0.25);
+    box-shadow:
+      0 0 0 16px rgba(255, 255, 255, 0.12),
+      0 0 0 32px rgba(201, 133, 139, 0.08);
+  }
+
+  .hero::after {
+    width: 190px;
+    height: 190px;
+    bottom: -100px;
+    right: -95px;
+    border-color: rgba(201, 133, 139, 0.22);
+  }
+
+  .hero-art .tiny-flower {
+    color: #c9858b;
+    text-shadow: 0 2px 12px rgba(201, 133, 139, 0.25);
+  }
+}
