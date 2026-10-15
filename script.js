@@ -65,7 +65,14 @@
 
 
 
-  const shareText = "You're invited to celebrate Vishnu Prasath & Rithanya! Reception: 21 November 2026, 6:00 PM onwards. Muhurtham: 22 November 2026, 7:45–8:45 AM. Venue: Vivaas Mahal, Dhali Road, Periyakulam Pirivu.";
+  
+const shareText = `You're invited to celebrate Vishnu Prasath & Rithanya!
+
+Reception: 21 November 2026, 6:00 PM onwards.
+Muhurtham: 22 November 2026, 7:45–8:45 AM.
+
+Venue: Vivaas Mahal, Dhali Road, Periyakulam Pirivu.`;
+
   $("shareInvite").addEventListener("click", (event) => {
     event.preventDefault();
     const url = window.location.href;
