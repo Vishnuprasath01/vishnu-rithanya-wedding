@@ -308,20 +308,9 @@ body.invitation-opening footer {
 
 
 /* Romantic wedding floral animations */
-.petal {
-  position: fixed;
-  top: -30px;
-  left: 15%;
-  width: 10px;
-  height: 15px;
-  border-radius: 80% 10% 70% 20%;
-  background: linear-gradient(135deg, #ffe1e7, #e98c9d);
-  pointer-events: none;
-  z-index: 8;
-  animation: falling-petal 16s linear infinite;
-}
 
-@keyframes falling-petal {
+/* Natural drifting petals */
+@keyframes natural-petal-drift {
   0% {
     transform: translate3d(0, -5vh, 0) rotate(0deg);
     opacity: 0;
@@ -329,67 +318,18 @@ body.invitation-opening footer {
   10% {
     opacity: 0.7;
   }
+  35% {
+    transform: translate3d(24px, 32vh, 0) rotate(140deg);
+  }
+  65% {
+    transform: translate3d(-20px, 70vh, 0) rotate(340deg);
+  }
   100% {
-    transform: translate3d(70px, 110vh, 0) rotate(540deg);
+    transform: translate3d(28px, 110vh, 0) rotate(540deg);
     opacity: 0;
   }
 }
 
-.hero-art .tiny-flower {
-  animation: flower-sway 5s ease-in-out infinite;
-}
-
-@keyframes flower-sway {
-  0%, 100% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .petal,
-  .hero-art .tiny-flower {
-    animation: none !important;
-  }
-}
-
-/* Extra romantic movement */
 .floating-petal {
-  animation-timing-function: linear;
-}
-
-.hero-art .sparkle {
-  animation: wedding-sparkle 3s ease-in-out infinite;
-  transform-origin: center;
-}
-
-.hero-art .sparkle-a {
-  animation-delay: 0s;
-}
-
-.hero-art .sparkle-b {
-  animation-delay: 1s;
-}
-
-.hero-art .sparkle-c {
-  animation-delay: 2s;
-}
-
-@keyframes wedding-sparkle {
-  0%, 100% {
-    opacity: 0.45;
-    scale: 0.9;
-  }
-  50% {
-    opacity: 1;
-    scale: 1.15;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-art .sparkle {
-    animation: none !important;
-  }
+  animation-name: natural-petal-drift;
 }
