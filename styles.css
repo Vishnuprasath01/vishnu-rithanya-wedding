@@ -430,3 +430,36 @@ body.invitation-opening footer {
     text-shadow: 0 2px 12px rgba(201, 133, 139, 0.25);
   }
 }
+
+/* Natural sideways petal movement */
+.petal {
+  animation-name: natural-petal-drift;
+  animation-timing-function: linear;
+}
+
+/* Gentle romantic sparkle */
+.hero-art .sparkle {
+  animation: wedding-sparkle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-art .sparkle-a { animation-delay: 0s; }
+.hero-art .sparkle-b { animation-delay: 1s; }
+.hero-art .sparkle-c { animation-delay: 2s; }
+
+@keyframes wedding-sparkle {
+  0%, 100% {
+    opacity: 0.45;
+    scale: 0.9;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art .sparkle {
+    animation: none !important;
+  }
+}
