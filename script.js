@@ -149,39 +149,42 @@ openInvitationBtn.addEventListener("click", async () => {
 
         // Smoothly scroll to the bottom of the entire page.
        
-const pageBottom = document.documentElement.scrollHeight;
-const scrollDuration = 60000; // 60 seconds
+
+const maxScroll = Math.max(
+  0,
+  document.documentElement.scrollHeight - window.innerHeight
+);
+
+const scrollDuration = 60000;
 const startPosition = window.scrollY;
-const distance = pageBottom - startPosition;
-        document.documentElement.style.scrollBehavior = "auto";
+const distance = maxScroll - startPosition;
 const startTime = performance.now();
 
 function slowAutoScroll(currentTime) {
   if (userInteracted) return;
 
-  const elapsed = currentTime - startTime;
-  const progress = Math.min(elapsed / scrollDuration, 1);
-
-  // Smooth start and stop
-  const easedProgress =
-    progress < 0.5
-      ? 4 * progress * progress * progress
-      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-  window.scrollTo(
-    0,
-    startPosition + distance * easedProgress
+  const progress = Math.min(
+    (currentTime - startTime) / scrollDuration,
+    1
   );
 
-if (progress < 1) {
-  requestAnimationFrame(slowAutoScroll);
-} else {
-  // Auto-scroll finished; return control to the visitor.
-  userInteracted = true;
-}
+  const easedProgress =
+    1 - Math.pow(1 - progress, 3);
+
+  const targetPosition =
+    startPosition + distance * easedProgress;
+
+  window.scrollTo(0, targetPosition);
+
+  if (progress < 1 && window.scrollY < maxScroll) {
+    requestAnimationFrame(slowAutoScroll);
+  } else {
+    userInteracted = true;
+  }
 }
 
 requestAnimationFrame(slowAutoScroll);
+
 
       }, 100);
 
