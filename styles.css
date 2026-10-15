@@ -335,6 +335,20 @@ body.invitation-opening footer {
   animation-name: natural-petal-drift;
 }
 
+.petal {
+  position: fixed;
+  z-index: 8;
+  top: -25px;
+  width: 10px;
+  height: 15px;
+  pointer-events: none;
+  border-radius: 80% 10% 70% 20%;
+  background: linear-gradient(135deg, #ffe1e7, #e98c9d);
+  opacity: 0;
+  animation: natural-petal-drift 16s linear infinite;
+  will-change: transform, opacity;
+}
+
 }
 
 /* Elegant couple name reveal */
