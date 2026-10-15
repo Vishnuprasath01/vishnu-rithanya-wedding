@@ -497,36 +497,46 @@ body.invitation-opening footer {
 }
 
 /* Romantic floating hearts */
+
 .floating-heart {
   position: fixed;
-  bottom: -30px;
+  bottom: -40px;
   z-index: 7;
   pointer-events: none;
-  color: #d98798;
-  opacity: 0;
+  user-select: none;
+  color: var(--heart-color, #e8a0b0);
+  font-family: Georgia, serif;
   font-size: var(--heart-size, 16px);
-  animation: heart-float var(--heart-duration, 12s) ease-in infinite;
+  line-height: 1;
+  opacity: 0;
+  filter: blur(var(--heart-blur, 0px));
+  text-shadow: 0 2px 5px rgba(190, 80, 110, 0.12),
+               0 0 12px rgba(255, 190, 205, 0.25);
+  animation: realistic-heart-float var(--heart-duration, 16s) linear infinite;
   animation-delay: var(--heart-delay, 0s);
   will-change: transform, opacity;
-  text-shadow: 0 0 8px rgba(217, 135, 152, 0.2);
 }
 
-@keyframes heart-float {
+@keyframes realistic-heart-float {
   0% {
-    transform: translate3d(0, 0, 0) rotate(-12deg) scale(0.8);
+    transform: translate3d(0, 0, 0) rotate(-18deg) scale(0.75);
     opacity: 0;
   }
-  15% {
-    opacity: 0.65;
+  12% {
+    opacity: var(--heart-opacity, 0.45);
   }
-  50% {
-    transform: translate3d(18px, -50vh, 0) rotate(10deg) scale(1);
+  28% {
+    transform: translate3d(18px, -25vh, 0) rotate(12deg) scale(0.95);
   }
-  85% {
-    opacity: 0.5;
+  52% {
+    transform: translate3d(-14px, -52vh, 0) rotate(-10deg) scale(1.05);
+  }
+  76% {
+    transform: translate3d(20px, -80vh, 0) rotate(15deg) scale(0.9);
+    opacity: 0.3;
   }
   100% {
-    transform: translate3d(-12px, -110vh, 0) rotate(-10deg) scale(0.9);
+    transform: translate3d(-8px, -115vh, 0) rotate(-12deg) scale(0.8);
     opacity: 0;
   }
 }
