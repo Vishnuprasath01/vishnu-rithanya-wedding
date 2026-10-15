@@ -49,6 +49,7 @@
  
   openInvitationBtn.addEventListener("click", async () => {
     document.body.classList.add("invitation-opening");
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
     welcomeScreen.classList.add("opening");
 
     try {
