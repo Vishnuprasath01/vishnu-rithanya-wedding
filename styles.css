@@ -547,3 +547,45 @@ body.invitation-opening footer {
     animation: none !important;
   }
 }
+
+/* Premium golden shimmer for couple names */
+.hero h1,
+.hero .couple-names,
+#heroNames,
+#heroNames * {
+  background: linear-gradient(
+    110deg,
+    #8f6827 0%,
+    #d8b45b 20%,
+    #fff1b8 38%,
+    #c99a3d 50%,
+    #fff5cc 62%,
+    #b88932 78%,
+    #f2d98a 100%
+  );
+  background-size: 250% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: couple-gold-shimmer 7s ease-in-out infinite;
+}
+
+@keyframes couple-gold-shimmer {
+  0% {
+    background-position: 100% center;
+  }
+  50% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero h1,
+  .hero .couple-names {
+    animation: none;
+  }
+}
