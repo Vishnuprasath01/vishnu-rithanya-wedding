@@ -105,21 +105,62 @@ for (let i = 0; i < 5; i++) {
   weddingAudio.volume = 0.75;
 
  
-  openInvitationBtn.addEventListener("click", async () => {
-    document.body.classList.add("invitation-opening");
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    welcomeScreen.classList.add("opening");
+ 
 
-    try {
-      await weddingAudio.play();
-    } catch (error) {
-      console.log("Music could not start:", error);
-    }
+openInvitationBtn.addEventListener("click", async () => {
+  document.body.classList.add("invitation-opening");
+  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  welcomeScreen.classList.add("opening");
 
+  try {
+    await weddingAudio.play();
+  } catch (error) {
+    console.log("Music could not start:", error);
+  }
+
+  window.setTimeout(() => {
+    welcomeScreen.style.display = "none";
+
+    // Keep the hero visible for one second.
     window.setTimeout(() => {
-      welcomeScreen.style.display = "none";
-    }, 850);
-  });
+      const introSection = document.querySelector("#intro");
+
+      if (!introSection) return;
+
+      let userInteracted = false;
+
+      const cancelAutoScroll = () => {
+        userInteracted = true;
+      };
+
+      const interactionOptions = {
+        once: true,
+        passive: true
+      };
+
+      window.addEventListener("touchstart", cancelAutoScroll, interactionOptions);
+      window.addEventListener("wheel", cancelAutoScroll, interactionOptions);
+      window.addEventListener("keydown", cancelAutoScroll, { once: true });
+
+      // Give the browser time to register user input.
+      window.setTimeout(() => {
+        window.removeEventListener("touchstart", cancelAutoScroll);
+        window.removeEventListener("wheel", cancelAutoScroll);
+        window.removeEventListener("keydown", cancelAutoScroll);
+
+        if (userInteracted) return;
+
+        introSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 100);
+
+    }, 1000);
+  }, 850);
+});
+
+
 
 
 
