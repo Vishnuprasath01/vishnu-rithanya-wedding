@@ -148,10 +148,37 @@ openInvitationBtn.addEventListener("click", async () => {
         if (userInteracted) return;
 
         // Smoothly scroll to the bottom of the entire page.
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: "smooth"
-        });
+       
+const pageBottom = document.documentElement.scrollHeight;
+const scrollDuration = 60000; // 60 seconds
+const startPosition = window.scrollY;
+const distance = pageBottom - startPosition;
+const startTime = performance.now();
+
+function slowAutoScroll(currentTime) {
+  if (userInteracted) return;
+
+  const elapsed = currentTime - startTime;
+  const progress = Math.min(elapsed / scrollDuration, 1);
+
+  // Smooth start and stop
+  const easedProgress =
+    progress < 0.5
+      ? 4 * progress * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+  window.scrollTo(
+    0,
+    startPosition + distance * easedProgress
+  );
+
+  if (progress < 1) {
+    requestAnimationFrame(slowAutoScroll);
+  }
+}
+
+requestAnimationFrame(slowAutoScroll);
+
       }, 100);
 
     }, 1000);
