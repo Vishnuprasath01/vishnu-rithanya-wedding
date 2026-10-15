@@ -495,3 +495,45 @@ body.invitation-opening footer {
     animation: none !important;
   }
 }
+
+/* Romantic floating hearts */
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  z-index: 7;
+  pointer-events: none;
+  color: #d98798;
+  opacity: 0;
+  font-size: var(--heart-size, 16px);
+  animation: heart-float var(--heart-duration, 12s) ease-in infinite;
+  animation-delay: var(--heart-delay, 0s);
+  will-change: transform, opacity;
+  text-shadow: 0 0 8px rgba(217, 135, 152, 0.2);
+}
+
+@keyframes heart-float {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-12deg) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.65;
+  }
+  50% {
+    transform: translate3d(18px, -50vh, 0) rotate(10deg) scale(1);
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(-12px, -110vh, 0) rotate(-10deg) scale(0.9);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-heart {
+    display: none;
+    animation: none !important;
+  }
+}
