@@ -121,77 +121,8 @@ openInvitationBtn.addEventListener("click", async () => {
 
   window.setTimeout(() => {
     welcomeScreen.style.display = "none";
-
-    // Keep the hero visible for one second.
-    window.setTimeout(() => {
-      let userInteracted = false;
-
-      const cancelAutoScroll = () => {
-        userInteracted = true;
-      };
-
-      const interactionOptions = {
-        once: true,
-        passive: true
-      };
-
-      window.addEventListener("wheel", cancelAutoScroll, interactionOptions);
-      window.addEventListener("touchstart", cancelAutoScroll, interactionOptions);
-      window.addEventListener("keydown", cancelAutoScroll, { once: true });
-
-      // Allow the browser to register user interaction.
-      window.setTimeout(() => {
-        window.removeEventListener("wheel", cancelAutoScroll);
-        window.removeEventListener("touchstart", cancelAutoScroll);
-        window.removeEventListener("keydown", cancelAutoScroll);
-
-        if (userInteracted) return;
-
-        // Smoothly scroll to the bottom of the entire page.
-       
-
-const maxScroll = Math.max(
-  0,
-  document.documentElement.scrollHeight - window.innerHeight
-);
-
-const scrollDuration = 60000;
-const startPosition = window.scrollY;
-const distance = maxScroll - startPosition;
-const startTime = performance.now();
-
-function slowAutoScroll(currentTime) {
-  if (userInteracted) return;
-
-  const progress = Math.min(
-    (currentTime - startTime) / scrollDuration,
-    1
-  );
-
-  const easedProgress =
-    1 - Math.pow(1 - progress, 3);
-
-  const targetPosition =
-    startPosition + distance * easedProgress;
-
-  window.scrollTo(0, targetPosition);
-
-  if (progress < 1 && window.scrollY < maxScroll) {
-    requestAnimationFrame(slowAutoScroll);
-  } else {
-    userInteracted = true;
-  }
-}
-
-requestAnimationFrame(slowAutoScroll);
-
-
-      }, 100);
-
-    }, 1000);
   }, 850);
 });
-
 
 
 
