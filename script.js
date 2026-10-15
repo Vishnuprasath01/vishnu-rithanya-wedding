@@ -153,6 +153,7 @@ const pageBottom = document.documentElement.scrollHeight;
 const scrollDuration = 60000; // 60 seconds
 const startPosition = window.scrollY;
 const distance = pageBottom - startPosition;
+        document.documentElement.style.scrollBehavior = "auto";
 const startTime = performance.now();
 
 function slowAutoScroll(currentTime) {
