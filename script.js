@@ -119,9 +119,17 @@ openInvitationBtn.addEventListener("click", async () => {
     console.log("Music could not start:", error);
   }
 
-  window.setTimeout(() => {
-    welcomeScreen.style.display = "none";
-  }, 850);
+
+window.setTimeout(() => {
+  welcomeScreen.style.display = "none";
+
+  // Restore normal page scrolling.
+  document.body.classList.remove("invitation-opening");
+  document.body.style.overflowY = "auto";
+  document.documentElement.style.overflowY = "auto";
+  document.documentElement.style.scrollBehavior = "auto";
+}, 850);
+
 });
 
 
