@@ -46,14 +46,20 @@
 
   weddingAudio.volume = 0.75;
 
+ 
   openInvitationBtn.addEventListener("click", async () => {
+    document.body.classList.add("invitation-opening");
+    welcomeScreen.classList.add("opening");
+
     try {
       await weddingAudio.play();
     } catch (error) {
       console.log("Music could not start:", error);
     }
 
-    welcomeScreen.style.display = "none";
+    window.setTimeout(() => {
+      welcomeScreen.style.display = "none";
+    }, 850);
   });
 
 
