@@ -306,3 +306,51 @@ body.invitation-opening footer {
   font-style: normal;
 }
 
+
+/* Romantic wedding floral animations */
+.petal {
+  position: fixed;
+  top: -30px;
+  left: 15%;
+  width: 10px;
+  height: 15px;
+  border-radius: 80% 10% 70% 20%;
+  background: linear-gradient(135deg, #ffe1e7, #e98c9d);
+  pointer-events: none;
+  z-index: 8;
+  animation: falling-petal 16s linear infinite;
+}
+
+@keyframes falling-petal {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(70px, 110vh, 0) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+.hero-art .tiny-flower {
+  animation: flower-sway 5s ease-in-out infinite;
+}
+
+@keyframes flower-sway {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal,
+  .hero-art .tiny-flower {
+    animation: none !important;
+  }
+}
