@@ -463,3 +463,35 @@ body.invitation-opening footer {
     animation: none !important;
   }
 }
+
+/* Stronger visible sparkle glow */
+.hero-art .sparkle {
+  color: #c58b55;
+  opacity: 1;
+  animation: visible-wedding-sparkle 2.4s ease-in-out infinite !important;
+  transform-origin: center;
+  text-shadow: 0 0 5px rgba(255, 210, 150, 0.8);
+}
+
+.hero-art .sparkle-a { animation-delay: 0s !important; }
+.hero-art .sparkle-b { animation-delay: 0.8s !important; }
+.hero-art .sparkle-c { animation-delay: 1.6s !important; }
+
+@keyframes visible-wedding-sparkle {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.85);
+    text-shadow: 0 0 2px rgba(255, 210, 150, 0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    text-shadow: 0 0 14px rgba(255, 190, 120, 0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art .sparkle {
+    animation: none !important;
+  }
+}
