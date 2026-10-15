@@ -354,3 +354,42 @@ body.invitation-opening footer {
     animation: none !important;
   }
 }
+
+/* Extra romantic movement */
+.floating-petal {
+  animation-timing-function: linear;
+}
+
+.hero-art .sparkle {
+  animation: wedding-sparkle 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-art .sparkle-a {
+  animation-delay: 0s;
+}
+
+.hero-art .sparkle-b {
+  animation-delay: 1s;
+}
+
+.hero-art .sparkle-c {
+  animation-delay: 2s;
+}
+
+@keyframes wedding-sparkle {
+  0%, 100% {
+    opacity: 0.45;
+    scale: 0.9;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-art .sparkle {
+    animation: none !important;
+  }
+}
