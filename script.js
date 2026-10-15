@@ -8,19 +8,33 @@
   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     const heartLayer = document.createDocumentFragment();
 
-    for (let i = 0; i < 5; i++) {
-      const heart = document.createElement("span");
-      heart.className = "floating-heart";
-      heart.textContent = "♥";
-      heart.setAttribute("aria-hidden", "true");
+  
+for (let i = 0; i < 5; i++) {
+  const heart = document.createElement("span");
+  heart.className = "floating-heart";
+  heart.textContent = "♥";
+  heart.setAttribute("aria-hidden", "true");
 
-      heart.style.left = `${12 + i * 18}%`;
-      heart.style.setProperty("--heart-size", `${12 + (i % 3) * 4}px`);
-      heart.style.setProperty("--heart-duration", `${12 + (i % 3) * 3}s`);
-      heart.style.setProperty("--heart-delay", `-${i * 2.5}s`);
+  const sizes = [11, 15, 19, 13, 17];
+  const durations = [18, 14, 21, 16, 19];
+  const colors = [
+    "#e8a0b0",
+    "#f0b8c5",
+    "#d98798",
+    "#f4c5ce",
+    "#df91a5"
+  ];
 
-      heartLayer.appendChild(heart);
-    }
+  heart.style.left = `${10 + i * 19}%`;
+  heart.style.setProperty("--heart-size", `${sizes[i]}px`);
+  heart.style.setProperty("--heart-duration", `${durations[i]}s`);
+  heart.style.setProperty("--heart-color", colors[i]);
+  heart.style.setProperty("--heart-opacity", `${0.3 + (i % 3) * 0.12}`);
+  heart.style.setProperty("--heart-blur", `${i % 2 ? 0.4 : 0}px`);
+  heart.style.setProperty("--heart-delay", `-${i * 3.2}s`);
+
+  heartLayer.appendChild(heart);
+}
 
     document.body.appendChild(heartLayer);
   }
