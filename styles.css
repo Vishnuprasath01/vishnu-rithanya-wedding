@@ -333,3 +333,52 @@ body.invitation-opening footer {
 .floating-petal {
   animation-name: natural-petal-drift;
 }
+
+/* Elegant couple name reveal */
+.hero-copy h1 {
+  animation: couple-name-reveal 1.5s ease-out both;
+}
+
+.hero-copy .script-line,
+.hero-copy .hero-description,
+.hero-copy .hero-date,
+.hero-copy .primary-link {
+  animation: couple-detail-reveal 1s ease-out both;
+}
+
+.hero-copy .script-line { animation-delay: 0.2s; }
+.hero-copy .hero-description { animation-delay: 0.45s; }
+.hero-copy .hero-date { animation-delay: 0.65s; }
+.hero-copy .primary-link { animation-delay: 0.85s; }
+
+@keyframes couple-name-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes couple-detail-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy h1,
+  .hero-copy .script-line,
+  .hero-copy .hero-description,
+  .hero-copy .hero-date,
+  .hero-copy .primary-link {
+    animation: none !important;
+  }
+}
