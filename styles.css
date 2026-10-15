@@ -330,8 +330,11 @@ body.invitation-opening footer {
   }
 }
 
-.floating-petal {
+
+.petal {
   animation-name: natural-petal-drift;
+}
+
 }
 
 /* Elegant couple name reveal */
