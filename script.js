@@ -38,34 +38,25 @@
   }
 
   // Visitor-controlled playback of the user's uploaded wedding song.
+ 
+  // Welcome screen and user-triggered wedding music.
   const weddingAudio = $("weddingAudio");
+  const welcomeScreen = $("welcomeScreen");
+  const openInvitationBtn = $("openInvitationBtn");
+
   weddingAudio.volume = 0.75;
-  let playing = false;
-  function setMusicUI() {
-    $("musicLabel").textContent = playing ? "Pause music" : "Play music";
-    $("musicToggle").setAttribute("aria-pressed", String(playing));
-  }
-  $("musicToggle").addEventListener("click", async () => {
-    if (playing) {
-      weddingAudio.pause();
-      playing = false;
-      setMusicUI();
-      return;
-    }
+
+  openInvitationBtn.addEventListener("click", async () => {
     try {
       await weddingAudio.play();
-      playing = true;
-      setMusicUI();
     } catch (error) {
-      $("musicLabel").textContent = "Tap to retry";
-      playing = false;
-      setMusicUI();
+      console.log("Music could not start:", error);
     }
+
+    welcomeScreen.style.display = "none";
   });
-  weddingAudio.addEventListener("ended", () => {
-    playing = false;
-    setMusicUI();
-  });
+
+
 
   const shareText = "You're invited to celebrate Vishnu Prasath & Rithanya! Reception: 21 November 2026, 6:00 PM onwards. Muhurtham: 22 November 2026, 7:45–8:45 AM. Venue: Vivaas Mahal, Dhali Road, Periyakulam Pirivu.";
   $("shareInvite").addEventListener("click", (event) => {
