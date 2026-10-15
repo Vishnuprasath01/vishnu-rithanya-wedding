@@ -173,9 +173,12 @@ function slowAutoScroll(currentTime) {
     startPosition + distance * easedProgress
   );
 
-  if (progress < 1) {
-    requestAnimationFrame(slowAutoScroll);
-  }
+if (progress < 1) {
+  requestAnimationFrame(slowAutoScroll);
+} else {
+  // Auto-scroll finished; return control to the visitor.
+  userInteracted = true;
+}
 }
 
 requestAnimationFrame(slowAutoScroll);
