@@ -156,3 +156,77 @@ footer > a { text-decoration: none; border: 1px solid #d6b7ad; border-radius: 50
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Wedding welcome screen */
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at top, #fff 0%, transparent 55%),
+    linear-gradient(145deg, #fffaf7, #f2d9d8);
+}
+
+.welcome-eyebrow {
+  font: 10px Arial, sans-serif;
+  letter-spacing: .28em;
+  color: var(--rose-dark);
+}
+
+.welcome-flower {
+  margin: 16px 0 4px;
+  color: var(--gold);
+  font-size: 38px;
+}
+
+.welcome-names {
+  font-size: clamp(42px, 8vw, 68px);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  margin: 12px 0 20px;
+}
+
+.welcome-names span {
+  display: block;
+  margin: 10px 0;
+  color: var(--gold);
+  font-style: italic;
+  font-size: .7em;
+}
+
+.welcome-date {
+  color: var(--rose-dark);
+  font-size: 17px;
+}
+
+.welcome-button {
+  margin-top: 24px;
+  padding: 15px 27px;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  background: var(--rose-dark);
+  color: white;
+  font-family: var(--serif);
+  font-size: 19px;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.welcome-button:hover {
+  background: var(--ink);
+  transform: translateY(-2px);
+}
+
+.welcome-hint {
+  margin-top: 17px;
+  font: 11px Arial, sans-serif;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
