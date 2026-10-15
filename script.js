@@ -3,6 +3,26 @@
   const weddingMoment = new Date("2026-11-22T07:45:00+05:30").getTime();
   const $ = (id) => document.getElementById(id);
 
+  // Lightweight falling flower petals
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const petals = document.createDocumentFragment();
+
+    for (let i = 0; i < 10; i++) {
+      const petal = document.createElement("span");
+      petal.className = "petal";
+      petal.setAttribute("aria-hidden", "true");
+
+      petal.style.left = `${(i * 37 + 11) % 100}%`;
+      petal.style.animationDuration = `${15 + (i % 5) * 2}s`;
+      petal.style.animationDelay = `-${(i * 2) % 15}s`;
+      petal.style.transform = `rotate(${i * 35}deg)`;
+
+      petals.appendChild(petal);
+    }
+
+    document.body.appendChild(petals);
+  }
+
   function updateCountdown() {
     const now = Date.now();
     const diff = weddingMoment - now;
