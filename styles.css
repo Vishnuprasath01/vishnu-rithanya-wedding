@@ -270,3 +270,25 @@ body.invitation-opening footer {
     transition: none !important;
   }
 }
+
+/* Couple names with infinity symbol */
+.couple-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.05;
+}
+
+.couple-heading > span:first-child,
+.couple-heading > span:last-child {
+  display: block;
+}
+
+.couple-heading .infinity-symbol {
+  color: var(--gold);
+  font-size: 0.75em;
+  line-height: 1;
+  margin: 2px 0;
+  font-style: normal;
+}
