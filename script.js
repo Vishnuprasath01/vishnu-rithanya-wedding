@@ -150,3 +150,16 @@ Venue: Vivaas Mahal, Dhali Road, Periyakulam Pirivu.`;
     window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   });
 })();
+
+
+document.addEventListener("visibilitychange", async () => {
+  if (document.hidden) {
+    weddingAudio.pause();
+  } else {
+    try {
+      await weddingAudio.play();
+    } catch (error) {
+      console.log("Music could not resume:", error);
+    }
+  }
+});
